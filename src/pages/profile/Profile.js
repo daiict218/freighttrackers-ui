@@ -1,19 +1,36 @@
-import React from 'react';
+import React, {useEffect, useState} from 'react';
 import { useSession } from '../../firebase/UserProvider';
+import { firestore } from '../../firebase/config';
+import PrivateRoute from '../../router/PrivateRoute';
 
 const Profile = () => {
     const { user } = useSession();
+    const [userDocument, setUserDocument] = useState(null);
 
-    if(!user){
+    useEffect(() => {
+        const docRef = firestore.collection('users').doc(user.uid);
+        const unsubscribe = docRef.onSnapshot(doc => {
+            if(doc.exists){
+                const documentData = doc.data();
+                setUserDocument(documentData);
+            }
+        })
+        // docRef.get().then(document => {
+        //     if(document.exists){
+        //         setUserDocument(document.data());
+        //     } else {
+
+        //     }
+        // })
+        return unsubscribe;
+    }, [user.uid]);
+
+    if(!userDocument){
         return null;
     }
 
     return (
-        <div>
-            <p>Name: {user.displayName}</p>
-            <p>Email: {user.email}</p>
-            <p>Id: {user.uid}</p>
-        </div>
+        <p>{JSON.stringify(userDocument)}</p>
     )
 }
 
