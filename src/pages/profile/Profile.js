@@ -1,7 +1,6 @@
 import React, {useEffect, useState} from 'react';
 import { useSession } from '../../firebase/UserProvider';
 import { firestore } from '../../firebase/config';
-import PrivateRoute from '../../router/PrivateRoute';
 
 const Profile = () => {
     const { user } = useSession();
