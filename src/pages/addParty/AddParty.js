@@ -1,15 +1,13 @@
 import React from 'react';
 import { useForm } from "react-hook-form";
-import Input from '../../components/formFields/input';
-import TextArea from '../../components/formFields/textArea';
+import { addParty } from '../../firebase/parties';
 
 import "./addParty.scss";
 
 const AddParty = () => {
     const { register, handleSubmit } = useForm();
-    const onSubmit = (data, ...rest) => {
-        debugger
-        console.log(data, rest);
+    const onSubmit = async (data) => {
+        await addParty(data);
     };
 
     return (

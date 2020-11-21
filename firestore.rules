@@ -6,5 +6,10 @@ service cloud.firestore {
       allow write: if request.auth.uid == userId;
       allow update: if request.auth.uid == userId;
     }
+    match /parties/add {
+      allow read: if 1 == 1;
+      allow write: if 1 == 1;
+      allow update: if 1 == 1;
+    }
   }
 }

@@ -1,6 +1,8 @@
 import React from 'react';
+import {connect} from 'react-redux';
 
-const Parties = () => {
+const Parties = (props) => {
+    console.log(props.parties);
     return (
         <div>
             {'Parties'}
@@ -8,4 +10,10 @@ const Parties = () => {
     )
 };
 
-export default Parties;
+const mapStateToProps = (state) => {
+    return {
+        parties: state.parties.parties,
+    };
+}
+
+export default connect(mapStateToProps)(Parties);
