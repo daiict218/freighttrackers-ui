@@ -5,7 +5,14 @@ const initialState = {
 };
 
 const partiesReducer = (state = initialState, action) => {
-    return state;
+    switch(action.type){
+        case 'CREATE_PARTY':
+            console.log('state', action.party);
+            return state;
+
+        default:
+            return state;
+    }
 }
 
 export default partiesReducer;

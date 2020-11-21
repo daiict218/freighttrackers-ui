@@ -1,11 +1,11 @@
 import authReducer from './authReducer';
-import partiesReducer from './partiesReducer';
+import partyReducer from './partyReducer';
 
 import {combineReducers} from 'redux';
 
 const rootReducer = combineReducers({
     auth: authReducer,
-    parties: partiesReducer
+    parties: partyReducer
 });
 
 export default rootReducer;

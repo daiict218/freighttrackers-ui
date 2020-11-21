@@ -12,7 +12,7 @@ export const createPartyDoc = async (party) => {
     };
 
     //write to cloud firestore
-    return docRef.add(partyProfile);
+    return docRef.set(partyProfile);
 };
 
 export const addParty = async ({name, address, gst}) => {

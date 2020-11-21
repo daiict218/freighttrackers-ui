@@ -1,13 +1,16 @@
 import React from 'react';
 import { useForm } from "react-hook-form";
 import { addParty } from '../../firebase/parties';
+import {createParty} from '../../store/actions/partyActions';
+import {connect} from 'react-redux';
 
 import "./addParty.scss";
 
-const AddParty = () => {
+const AddParty = (props) => {
     const { register, handleSubmit } = useForm();
     const onSubmit = async (data) => {
-        await addParty(data);
+        props.createParty(data);
+        // await addParty(data);
     };
 
     return (
@@ -53,4 +56,10 @@ const AddParty = () => {
     );
 };
 
-export default AddParty;
+const mapDispatchToProps = (dispatch) => {
+    return {
+        createParty: party => dispatch(createParty(party))
+    };
+}
+
+export default connect(null, mapDispatchToProps)(AddParty);
