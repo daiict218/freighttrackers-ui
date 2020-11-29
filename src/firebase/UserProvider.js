@@ -23,6 +23,5 @@ export const UserProvider = (props) => {
 
 export const useSession = () => {
     const session = useContext(UserContext);
-    console.log(session);
     return session;
-};
+}

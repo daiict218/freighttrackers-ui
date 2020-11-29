@@ -1,12 +1,11 @@
 import React from 'react';
 import {connect} from 'react-redux';
+import Table from '../../components/table';
 
 const Parties = (props) => {
     console.log(props.parties);
     return (
-        <div>
-            {'Parties'}
-        </div>
+        <Table />
     )
 };
 
